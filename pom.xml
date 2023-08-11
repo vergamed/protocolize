@@ -19,13 +19,13 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <build.number>unknown</build.number>
-        <bungeecord.version>1.17-R0.1-SNAPSHOT</bungeecord.version>
+        <build.number>vergamed</build.number>
+        <bungeecord.version>1.20-R0.1-SNAPSHOT</bungeecord.version>
         <velocity.version>3.2.0-SNAPSHOT</velocity.version>
         <bytebuddy.version>1.11.13</bytebuddy.version>
         <data.version>2.3.0</data.version>
     </properties>
-i
+
     <repositories>
         <repository>
             <id>exceptionflug</id>

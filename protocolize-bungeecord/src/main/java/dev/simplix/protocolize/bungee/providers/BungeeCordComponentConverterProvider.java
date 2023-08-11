@@ -2,9 +2,9 @@ package dev.simplix.protocolize.bungee.providers;
 
 import dev.simplix.protocolize.api.ComponentConverter;
 import dev.simplix.protocolize.api.providers.ComponentConverterProvider;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 /**
  * Date: 24.08.2021
@@ -15,34 +15,36 @@ public final class BungeeCordComponentConverterProvider implements ComponentConv
 
     @Override
     public ComponentConverter<?> platformConverter() {
-        return BungeeCordComponentConverter.INSTANCE;
+        return AdventureComponentConverter.INSTANCE;
     }
 
-    public static class BungeeCordComponentConverter implements ComponentConverter<BaseComponent[]> {
+    public static class AdventureComponentConverter implements ComponentConverter<Component> {
 
-        static BungeeCordComponentConverter INSTANCE = new BungeeCordComponentConverter();
+        static AdventureComponentConverter INSTANCE = new AdventureComponentConverter();
 
-        private BungeeCordComponentConverter() {
+        private final LegacyComponentSerializer legacyComponentSerializer = LegacyComponentSerializer.legacySection();
+        private final GsonComponentSerializer gsonComponentSerializer = GsonComponentSerializer.gson();
+
+        private AdventureComponentConverter() {}
+
+        @Override
+        public String toLegacyText(Component component) {
+            return legacyComponentSerializer.serialize(component);
         }
 
         @Override
-        public String toLegacyText(BaseComponent[] components) {
-            return new TextComponent(components).toLegacyText();
+        public String toJson(Component component) {
+            return gsonComponentSerializer.serialize(component);
         }
 
         @Override
-        public String toJson(BaseComponent[] components) {
-            return ComponentSerializer.toString(components);
+        public Component fromLegacyText(String legacyText) {
+            return legacyComponentSerializer.deserialize("§r" + legacyText);
         }
 
         @Override
-        public BaseComponent[] fromLegacyText(String legacyText) {
-            return TextComponent.fromLegacyText("§r" + legacyText);
-        }
-
-        @Override
-        public BaseComponent[] fromJson(String json) {
-            return ComponentSerializer.parse(json);
+        public Component fromJson(String json) {
+            return gsonComponentSerializer.deserialize(json);
         }
 
     }
