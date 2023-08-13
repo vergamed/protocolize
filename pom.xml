@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>protocolize-api</module>
+        <module>protocolize-api-vg</module>
         <module>protocolize-velocity</module>
         <module>protocolize-bungeecord</module>
     </modules>
@@ -19,7 +19,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <build.number>vergamed</build.number>
+        <build.number>vg-2</build.number>
         <bungeecord.version>1.20-R0.1-SNAPSHOT</bungeecord.version>
         <velocity.version>3.2.0-SNAPSHOT</velocity.version>
         <bytebuddy.version>1.11.13</bytebuddy.version>

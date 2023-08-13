@@ -30,7 +30,7 @@ We provide some documentation on how to migrate your existing plugin to use the 
 ```xml
 <dependency>
     <groupId>dev.simplix</groupId>
-    <artifactId>protocolize-api</artifactId>
+    <artifactId>protocolize-api-vg</artifactId>
     <version>2.3.0</version>
     <scope>provided</scope>
 </dependency>
@@ -44,7 +44,7 @@ repsitories {
 }
 
 dependencies {
-    compileOnly("dev.simplix:protocolize-api:2.2.5")
+    compileOnly("dev.simplix:protocolize-api-vg:2.2.5")
 }
 ```
 ### Install the plugin

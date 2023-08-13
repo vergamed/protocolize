@@ -12,6 +12,8 @@ import java.util.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 import net.querz.nbt.tag.CompoundTag;
+import net.querz.nbt.tag.StringTag;
+import net.querz.nbt.tag.Tag;
 
 /**
  * This class represents a Minecraft item stack. <br>
@@ -172,13 +174,15 @@ public class ItemStack implements BaseItemStack {
   }
 
   @Override
-  public void addToLore(String legacyText) {
+  public ItemStack addToLore(String legacyText) {
     this.loreJson.add(CONVERTER.toJson(CONVERTER.fromLegacyText(legacyText)));
+    return this;
   }
 
   @Override
-  public void addToLore(Object component) {
+  public ItemStack addToLore(Object component) {
     this.loreJson.add(CONVERTER.toJson(component));
+    return this;
   }
 
   @Override
@@ -195,4 +199,15 @@ public class ItemStack implements BaseItemStack {
     return itemStack;
   }
 
+  @Override
+  public ItemStack addNbtData(String key, Tag<?> tag) {
+    nbtData.put(key, tag);
+    return this;
+  }
+
+  @Override
+  public ItemStack uiTag(String tag) {
+    addNbtData("uitag", new StringTag(tag));
+    return this;
+  }
 }

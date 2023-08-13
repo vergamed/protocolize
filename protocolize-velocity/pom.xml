@@ -47,7 +47,7 @@
 
         <dependency>
             <groupId>dev.simplix</groupId>
-            <artifactId>protocolize-api</artifactId>
+            <artifactId>protocolize-api-vg</artifactId>
             <version>2.3.0</version>
             <scope>compile</scope>
         </dependency>

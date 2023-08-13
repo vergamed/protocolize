@@ -1,5 +1,7 @@
 package dev.simplix.protocolize.api.item;
 
+import net.querz.nbt.tag.Tag;
+
 import java.util.List;
 import java.util.Set;
 
@@ -34,9 +36,9 @@ public interface BaseItemStack {
 
   void lore(int index, Object component);
 
-  void addToLore(String legacyText);
+  ItemStack addToLore(String legacyText);
 
-  void addToLore(Object component);
+  ItemStack addToLore(Object component);
 
   BaseItemStack deepClone();
 
@@ -61,4 +63,8 @@ public interface BaseItemStack {
   BaseItemStack durability(short durability);
 
   BaseItemStack hideFlags(int hideFlags);
+
+  BaseItemStack addNbtData(String key, Tag<?> tag);
+
+  BaseItemStack uiTag(String tag);
 }
